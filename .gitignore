@@ -1,0 +1,22 @@
+# --- Runtime artifacts created by start.ps1/stop.ps1 ---
+.pids/
+.logs/
+
+# --- Backend (Python) ---
+__pycache__/
+*.pyc
+backend/price_cache/
+backend/backtest_history.json
+.venv/
+venv/
+
+# --- Frontend (Node/Vite) ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# --- Editor/OS ---
+.vscode/
+.idea/
+.DS_Store
