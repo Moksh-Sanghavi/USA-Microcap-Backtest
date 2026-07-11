@@ -20,3 +20,6 @@ frontend/*.local
 .vscode/
 .idea/
 .DS_Store
+
+# Claude Code local tool config (not needed in the repo)
+.claude/
