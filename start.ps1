@@ -59,3 +59,21 @@ Write-Host "Frontend (PID $($frontend.Id)): http://127.0.0.1:3050" -ForegroundCo
 Write-Host ""
 Write-Host "Logs: $LogDir"
 Write-Host "Run stop.ps1 to shut both down."
+
+# Wait for the frontend to actually be ready, then open it in the default
+# browser -- opening immediately would just show a connection error while
+# Vite is still starting up.
+Write-Host ""
+Write-Host "Waiting for frontend to come up before opening the browser..." -ForegroundColor Cyan
+$FrontendUrl = "http://127.0.0.1:3050"
+$ready = $false
+for ($i = 0; $i -lt 30; $i++) {
+    if (Test-PortInUse 3050) { $ready = $true; break }
+    Start-Sleep -Milliseconds 500
+}
+
+if ($ready) {
+    Start-Process $FrontendUrl
+} else {
+    Write-Host "Frontend didn't come up in time -- open $FrontendUrl manually, or check .logs\frontend.err.log." -ForegroundColor Yellow
+}
