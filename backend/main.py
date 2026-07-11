@@ -18,9 +18,13 @@ app = FastAPI(
 )
 
 # Allow the local frontend dev server to call this API from the browser.
+# Both hostnames are listed because browsers treat "localhost" and
+# "127.0.0.1" as distinct origins even though they hit the same server --
+# missing either one here causes every request from that origin to fail
+# CORS preflight with a 400, which looks like "backend unreachable" in the UI.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3050"],
+    allow_origins=["http://localhost:3050", "http://127.0.0.1:3050"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
