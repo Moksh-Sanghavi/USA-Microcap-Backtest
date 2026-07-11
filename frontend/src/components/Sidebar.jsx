@@ -1,4 +1,4 @@
-import { LineChart, Wallet, Layers, CalendarClock, Play, Loader2 } from "lucide-react";
+import { Wallet, Layers, CalendarClock, Play, Loader2 } from "lucide-react";
 
 /**
  * Left control panel: strategy inputs + the primary "Run Backtest" action.
@@ -9,9 +9,6 @@ export default function Sidebar({ form, onChange, onSubmit, loading }) {
     <aside className="w-full lg:w-80 shrink-0 flex flex-col gap-6">
       <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-2xl shadow-black/40">
         <div className="flex items-center gap-2.5 mb-1">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 shadow-lg shadow-blue-500/20">
-            <LineChart className="w-5 h-5 text-white" strokeWidth={2.25} />
-          </div>
           <div>
             <h1 className="text-base font-semibold text-slate-100 tracking-tight">
               Micro-Cap Quant Engine
@@ -102,7 +99,7 @@ export default function Sidebar({ form, onChange, onSubmit, loading }) {
       <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-5 text-xs text-slate-500 leading-relaxed">
         Each run randomly draws a fresh basket every rebalance period from a
         ~500-name US micro-cap universe. Results are non-deterministic by
-        design — re-run to sample a new random path.
+        design, re-run to sample a new random path.
       </div>
     </aside>
   );
